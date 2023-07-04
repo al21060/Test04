@@ -16,7 +16,7 @@ function ScoreCalculation(hand){
     var tentativeHand=[12];
     //星付きの数を判定
     for(let i=0; i<11; ++i){
-        if(hand[i]%2==1){
+        if(hand[i]%2==1){//aaaaaaaaaaa
             theNumberOfStar++;
             tentativeHand[i]=((hand[i]-1)%1000)/10
         }
