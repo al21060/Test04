@@ -13,13 +13,16 @@ Function     :アガリ点を決める
 
 function scoreCalculation(hand,winPoint){
     var tentativeHand=[12];
-    //星付きの数を判定
+    //手牌の数列を色情報のみの配列に変更
     for(let i=0; i<11; ++i){
         if(hand[i]%2==1){
             tentativeHand[i]=((hand[i]-1)%1000)/10
         }
         else{
             tentativeHand[i]=(hand[i]%1000)/10;
+        }
+        if(hand[i]>1000){//ポンしている牌は別の色として処理
+            tentativeHand[i]+=12;
         }
     }
     tentativeHand.sort();
@@ -34,13 +37,13 @@ function scoreCalculation(hand,winPoint){
         }
     }
     const firstLastIndex=tentativeHand.lastIndexOf(hands[0]);
-    if(firstLastIndex==11){
+    if(firstLastIndex==11){//1色12牌
         winPoint= 600;
         return winPoint;
     }
     else{
         if(firstLastIndex==8){
-            if(tentativeHand[9]==tentativeHand[11]){
+            if(tentativeHand[9]==tentativeHand[11]){//2色　0~8 9~11
                 winPoint= 360;
                 return winPoint;
             }
@@ -48,7 +51,7 @@ function scoreCalculation(hand,winPoint){
                 return -1;
             }
         }
-        else if(firstLastIndex==7){
+        else if(firstLastIndex==7){//2色 0~7
             if(tentativeHand[8]==tentativeHand[11]){
                 winPoint= 360;
                 return winPoint;
@@ -92,7 +95,8 @@ function scoreCalculation(hand,winPoint){
                 winPoint= 210;
                 return winPoint;
             }
-            else if((tentativeHand[3]==tentativeHand[5])&&(tentativeHand[6]==tentativeHand[8])&&(tentativeHand[9]==tentativeHand[11])){
+            else if((tentativeHand[3]==tentativeHand[5])&&
+                    (tentativeHand[6]==tentativeHand[8])&&(tentativeHand[9]==tentativeHand[11])){
                 winPoint=120;
                 return winPoint;
             }
