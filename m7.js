@@ -11,7 +11,7 @@ Date         :2023.6.13
 Function     :アガリ点を決める
 */
 
-function ScoreCalculation(hand){
+function scoreCalculation(hand,winpoint){
     let theNumberOfStar=0;
     var tentativeHand=[12];
     //星付きの数を判定
@@ -31,17 +31,20 @@ function ScoreCalculation(hand){
             break;
         }
         if(i==10){
-            return 90+15*theNumberOfStar;
+            winpoint= 90+15*theNumberOfStar;
+            return winpoint;
         }
     }
     const firstLastIndex=tentativeHand.lastIndexOf(hands[0]);
     if(firstLastIndex==11){
-        return 600+15*theNumberOfStar;
+        winpoint= 600+15*theNumberOfStar;
+        return winpoint;
     }
     else{
         if(firstLastIndex==8){
             if(tentativeHand[9]==tentativeHand[11]){
-                return 360+15*theNumberOfStar;
+                winpoint= 360+15*theNumberOfStar;
+                return winpoint;
             }
             else {
                 return -1;
@@ -49,7 +52,8 @@ function ScoreCalculation(hand){
         }
         else if(firstLastIndex==7){
             if(tentativeHand[8]==tentativeHand[11]){
-                return 360+15*theNumberOfStar;
+                winpoint= 360+15*theNumberOfStar;
+                return winpoint;
             }
             else {
                 return -1;
@@ -57,10 +61,12 @@ function ScoreCalculation(hand){
         }
         else if(firstLastIndex==5){
             if(tentativeHand[6]==tentativeHand[11]){
-                return 270+15*theNumberOfStar;
+                winpoint= 270+15*theNumberOfStar;
+                return winpoint;
             }
             else if((tentativeHand[6]==tentativeHand[8])&&(tentativeHand[9]==tentativeHand[11])){
-                return 210+15*theNumberOfStar;
+                winpoint= 210+15*theNumberOfStar;
+                return winpoint;
             }
             else {
                 return -1;
@@ -68,10 +74,12 @@ function ScoreCalculation(hand){
         }
         else if(firstLastIndex==3){
             if(tentativeHand[4]==tentativeHand[11]){
-                return 360+15*theNumberOfStar;
+                winpoint= 360+15*theNumberOfStar;
+                return winpoint;
             }
             else if((tentativeHand[4]==tentativeHand[7])&&(tentativeHand[8]==tentativeHand[11])){
-                return 180+15*theNumberOfStar;
+                winpoint= 180+15*theNumberOfStar;
+                return winpoint;
             }
             else {
                 return -1;
@@ -79,13 +87,16 @@ function ScoreCalculation(hand){
         }
         else if(firstLastIndex==2){
             if(tentativeHand[3]==tentativeHand[11]){
-                return 360+15*theNumberOfStar;
+                winpoint= 360+15*theNumberOfStar;
+                return winpoint;
             }
             else if((tentativeHand[5]==tentativeHand[6])||(tentativeHand[8]==tentativeHand[9])){
-                return 210+15*theNumberOfStar;
+                winpoint= 210+15*theNumberOfStar;
+                return winpoint;
             }
             else if((tentativeHand[3]==tentativeHand[5])&&(tentativeHand[6]==tentativeHand[8])&&(tentativeHand[9]==tentativeHand[11])){
-                120+15*theNumberOfStar;
+                winpoint=120+15*theNumberOfStar;
+                return winpoint;
             }
             else {
                 return -1;
